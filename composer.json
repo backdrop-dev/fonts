@@ -1,0 +1,25 @@
+{
+    "name": "benlumia007/backdrop-fonts",
+    "description": "A core that helps you build amazing themes",
+    "keywords": [
+        "wordpress"
+    ],
+    "homepage": "https://github.com/benlumia007/backdrop-googlefonts",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Benjamin Lu",
+            "email": "benlumia007@gmail.com",
+            "homepage": "https://benjlu.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Benlumia007\\Backdrop\\Fonts\\": "src/"
+		}
+    },
+    "require": {
+        "php": ">=7.4.29"
+    }
+}
