@@ -35,4 +35,11 @@ class Component implements Bootable {
 			'tangerine'
 		] );
 	}
+
+	/**
+	 * 
+	 */
+	public function boot() {
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
+	}
 }
