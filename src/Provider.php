@@ -10,7 +10,7 @@
  */
 
 namespace Benlumia007\Backdrop\Fonts;
-use Benlumia007\Backdrop\Support\ServiceProvider;
+use Backdrop\Core\ServiceProvider;
 
 class Provider extends ServiceProvider {
 	/**
