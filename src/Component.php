@@ -9,8 +9,8 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Benlumia007\Backdrop\Fonts;
-use Benlumia007\Backdrop\Contracts\Bootable;
+namespace Backdrop\Fonts;
+use Backdrop\Contracts\Bootable;
 
 class Component implements Bootable {
 	/**

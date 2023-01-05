@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-          "Benlumia007\\Backdrop\\Fonts\\": "src/"
+          "Backdrop\\Fonts\\": "src/"
 		}
     },
     "require": {
