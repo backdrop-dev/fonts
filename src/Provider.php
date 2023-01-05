@@ -27,7 +27,7 @@ class Provider extends ServiceProvider {
 		$this->app->alias( Component::class, 'backdrop/fonts' );
     }
     
-    public function boot() {
+    public function boot() : void {
         $this->app->resolve( 'backdrop/fonts' )->boot();
     }
 }

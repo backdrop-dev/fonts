@@ -39,7 +39,7 @@ class Component implements Bootable {
 	/**
 	 * 
 	 */
-	public function boot() {
+	public function boot() : void {
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
 	}
 }
