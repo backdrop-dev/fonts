@@ -20,7 +20,7 @@ class Provider extends ServiceProvider {
 	 * @access public
 	 * @return void
 	 */
-	public function register() {
+	public function register(): void {
 
 		$this->app->bind( Component::class );
 
