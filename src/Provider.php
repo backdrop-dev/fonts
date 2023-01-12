@@ -10,7 +10,7 @@
  */
 
 namespace Backdrop\Fonts;
-use Backdrop\Tools\ServiceProvider;
+use Backdrop\Core\ServiceProvider;
 
 class Provider extends ServiceProvider {
 	/**

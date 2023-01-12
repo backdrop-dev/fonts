@@ -10,6 +10,7 @@
  */
 
 namespace Backdrop\Fonts;
+
 use Backdrop\Contracts\Bootable;
 
 class Component implements Bootable {
@@ -22,7 +23,7 @@ class Component implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function enqueue() {
+	public function enqueue(): void {
 		/**
 		 * This will load Fonts as part of the theme. Fira Sans, Merriweather, and Tangerine. For more information
 		 * regarding this feature, please go to the following url. https://google-webfonts-helper.herokuapp.com/fonts
