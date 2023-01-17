@@ -20,7 +20,7 @@
 		}
     },
     "require": {
-        "php": ">=8.0",
-        "benlumia007/backdrop": "^2.0.0"
+        "php": ">=7.4",
+        "benlumia007/backdrop": "^2.0"
     }
 }
