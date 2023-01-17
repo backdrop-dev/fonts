@@ -62,16 +62,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/benlumia007/backdrop-contracts.git",
-                "reference": "eac919d47c6380f7006d9d3f47a01d8d239626eb"
+                "reference": "0bf8ae0b1af5a32502e74dec17bb28cc5e76824b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/eac919d47c6380f7006d9d3f47a01d8d239626eb",
-                "reference": "eac919d47c6380f7006d9d3f47a01d8d239626eb",
+                "url": "https://api.github.com/repos/benlumia007/backdrop-contracts/zipball/0bf8ae0b1af5a32502e74dec17bb28cc5e76824b",
+                "reference": "0bf8ae0b1af5a32502e74dec17bb28cc5e76824b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": ">=8.0"
             },
             "type": "library",
             "autoload": {
@@ -101,7 +101,7 @@
                 "issues": "https://github.com/benlumia007/backdrop-contracts/issues",
                 "source": "https://github.com/benlumia007/backdrop-contracts/tree/1.0.0"
             },
-            "time": "2023-01-05T06:42:52+00:00"
+            "time": "2023-01-17T07:26:43+00:00"
         }
     ],
     "packages-dev": [],
