@@ -23,7 +23,7 @@ class Component implements Bootable {
 	 * @access public
 	 * @return void
 	 */
-	public function enqueue(): void {
+	public function enqueue() {
 		/**
 		 * This will load Fonts as part of the theme. Fira Sans, Merriweather, and Tangerine. For more information
 		 * regarding this feature, please go to the following url. https://google-webfonts-helper.herokuapp.com/fonts
@@ -40,7 +40,7 @@ class Component implements Bootable {
 	/**
 	 * 
 	 */
-	public function boot() : void {
+	public function boot() {
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
 	}
 }
