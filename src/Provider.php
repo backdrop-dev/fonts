@@ -20,14 +20,14 @@ class Provider extends ServiceProvider {
 	 * @access public
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 
 		$this->app->bind( Component::class );
 
 		$this->app->alias( Component::class, 'backdrop/fonts' );
     }
     
-    public function boot() : void {
+    public function boot() {
         $this->app->resolve( 'backdrop/fonts' )->boot();
     }
 }
