@@ -26,7 +26,7 @@ class Component implements Bootable {
 	 * @uses   wp_register_style()
 	 * @access public
 	 */
-	function register( $handle, $args = [] ) {
+	public function register( $handle, $args = [] ) {
 
 		$args = wp_parse_args( $args, [
 			'family'  => [],
