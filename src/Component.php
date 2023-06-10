@@ -97,7 +97,7 @@ class Component implements Bootable {
 	public function enqueue( $handle, array $args = [] ) {
 
 		if ( ! $this->is_registered( $handle ) ) {
-			register( $handle, $args );
+			$this->register( $handle, $args );
 		}
 
 		wp_enqueue_style( "{$handle}-font" );
