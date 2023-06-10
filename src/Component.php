@@ -53,7 +53,7 @@ class Component implements Bootable {
 	 */
 	public function is_registered( $handle ) {
 
-		return $t1his->is( $handle, 'registered' );
+		return $this->is( $handle, 'registered' );
 	}
 
 	/**
