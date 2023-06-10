@@ -51,7 +51,7 @@ class Component implements Bootable {
 	 *
 	 * @access public
 	 */
-	function is_registered( $handle ) {
+	public function is_registered( $handle ) {
 
 		return is( $handle, 'registered' );
 	}
