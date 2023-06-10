@@ -14,28 +14,55 @@ namespace Backdrop\Fonts;
 use Backdrop\Contracts\Bootable;
 
 class Component implements Bootable {
+
 	/**
-	 * Loads enqueue();
-	 * 
-	 * THe enqueue(); is used to define any scripts and styles that's going to be used part of a theme.
-	 * 
+	 * Registers a font.
+	 *
 	 * @since  1.0.0
+	 * @param  string $handle
+	 * @param  array  $args
+	 * @return bool
+	 *
+	 * @uses   wp_register_style()
 	 * @access public
-	 * @return void
 	 */
-	public function enqueue() {
-		/**
-		 * This will load Fonts as part of the theme. Fira Sans, Merriweather, and Tangerine. For more information
-		 * regarding this feature, please go to the following url. https://google-webfonts-helper.herokuapp.com/fonts
-		 */
-		array_map( function( $file ) {
-			wp_enqueue_style( "backdrop-$file", get_parent_theme_file_uri( "/vendor/benlumia007/backdrop-fonts/fonts/$file.css" ) );
-		}, [
-			'fira-sans',
-			'merriweather',
-			'tangerine'
+	public function register( $handle, $args = [] ) {
+
+		$args = wp_parse_args( $args, [
+			'family'  => [],
+			'depends' => '',
+			'version' => null,
+			'media' => 'all',
+
+			'src' => gt_parent_theme_file_path( "vendor/benlumia007/backdrop-fonts/fonts/{$handle}.css" )
 		] );
+
+		$url = url( $handle, $args );
+
+		return wp_register_style( "$handle", $url, $args['depends'], $args['version'], $args['media'] );
 	}
+
+
+/**
+ * Enqueue a registered font.  If the font is not registered, pass the `$args` to
+ * register it.  See `register_font()`.
+ *
+ * @since  5.0.0
+ * @param  string $handle
+ * @param  array  $args
+ * @return void
+ *
+ * @uses   wp_enqueue_style()
+ * @access public
+ */
+function enqueue( $handle, array $args = [] ) {
+
+    if ( ! is_registered( $handle ) ) {
+        register( $handle, $args );
+    }
+
+    wp_enqueue_style( "{$handle}-font" );
+}
 
 	/**
 	 * 
