@@ -57,20 +57,20 @@ class Component implements Bootable {
 	}
 
 	/**
- * Checks a font's status.
- *
- * @since  5.0.0
- * @param  string $handle
- * @param  string $list
- * @return bool
- *
- * @uses   wp_style_is()
- * @access public
- */
-function is( $handle, $list = 'enqueued' ) {
+	 * Checks a font's status.
+	 *
+	 * @since  5.0.0
+	 * @param  string $handle
+	 * @param  string $list
+	 * @return bool
+	 *
+	 * @uses   wp_style_is()
+	 * @access public
+	 */
+	function is( $handle, $list = 'enqueued' ) {
 
-    return wp_style_is( "{$handle}-font", $list );
-}
+		return wp_style_is( "{$handle}-font", $list );
+	}
 
 
 	/**
@@ -85,7 +85,7 @@ function is( $handle, $list = 'enqueued' ) {
 	 * @uses   wp_enqueue_style()
 	 * @access public
 	 */
-	function enqueue( $handle, array $args = [] ) {
+	public function enqueue( $handle, array $args = [] ) {
 
 		if ( ! is_registered( $handle ) ) {
 			register( $handle, $args );
