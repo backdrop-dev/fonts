@@ -34,7 +34,7 @@ class Component implements Bootable {
 			'version' => null,
 			'media' => 'all',
 
-			'src' => gt_parent_theme_file_path( "vendor/benlumia007/backdrop-fonts/fonts/{$handle}.css" )
+			'src' => get_parent_theme_file_path( "vendor/benlumia007/backdrop-fonts/fonts/{$handle}.css" )
 		] );
 
 		$url = url( $handle, $args );
