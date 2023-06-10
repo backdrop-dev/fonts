@@ -42,6 +42,36 @@ class Component implements Bootable {
 		return wp_register_style( "$handle", $url, $args['depends'], $args['version'], $args['media'] );
 	}
 
+	/**
+	 * Checks if a font is registered.
+	 *
+	 * @since  5.0.0
+	 * @param  string $handle
+	 * @return bool
+	 *
+	 * @access public
+	 */
+	function is_registered( $handle ) {
+
+		return is( $handle, 'registered' );
+	}
+
+	/**
+ * Checks a font's status.
+ *
+ * @since  5.0.0
+ * @param  string $handle
+ * @param  string $list
+ * @return bool
+ *
+ * @uses   wp_style_is()
+ * @access public
+ */
+function is( $handle, $list = 'enqueued' ) {
+
+    return wp_style_is( "{$handle}-font", $list );
+}
+
 
 /**
  * Enqueue a registered font.  If the font is not registered, pass the `$args` to
