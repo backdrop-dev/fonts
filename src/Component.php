@@ -43,7 +43,7 @@ class Component implements Bootable {
 			'src'     => '', // Will overwrite Google Fonts arguments.
 		] );
 
-		$url = url( $handle, $args );
+		$url = $this->url( $handle, $args );
 
 		// If there's no src and we have a family, we're loading from Google Fonts.
 		if ( ! $args['src'] && $args['family'] ) {
