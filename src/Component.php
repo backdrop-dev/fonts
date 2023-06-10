@@ -26,7 +26,7 @@ class Component implements Bootable {
 	 * @uses   wp_register_style()
 	 * @access public
 	 */
-	public function register( $handle, $args = [] ) {
+	function register( $handle, $args = [] ) {
 
 		$args = wp_parse_args( $args, [
 			'family'  => [],
@@ -73,26 +73,26 @@ function is( $handle, $list = 'enqueued' ) {
 }
 
 
-/**
- * Enqueue a registered font.  If the font is not registered, pass the `$args` to
- * register it.  See `register_font()`.
- *
- * @since  5.0.0
- * @param  string $handle
- * @param  array  $args
- * @return void
- *
- * @uses   wp_enqueue_style()
- * @access public
- */
-function enqueue( $handle, array $args = [] ) {
+	/**
+	 * Enqueue a registered font.  If the font is not registered, pass the `$args` to
+	 * register it.  See `register_font()`.
+	 *
+	 * @since  5.0.0
+	 * @param  string $handle
+	 * @param  array  $args
+	 * @return void
+	 *
+	 * @uses   wp_enqueue_style()
+	 * @access public
+	 */
+	function enqueue( $handle, array $args = [] ) {
 
-    if ( ! is_registered( $handle ) ) {
-        register( $handle, $args );
-    }
+		if ( ! is_registered( $handle ) ) {
+			register( $handle, $args );
+		}
 
-    wp_enqueue_style( "{$handle}-font" );
-}
+		wp_enqueue_style( "{$handle}-font" );
+	}
 
 	/**
 	 * 
