@@ -145,7 +145,7 @@ class Component implements Bootable {
 	 */
 	public function is_registered( $handle ) {
 
-		return is( $handle, 'registered' );
+		return $this->is( $handle, 'registered' );
 	}
 
 	/**
