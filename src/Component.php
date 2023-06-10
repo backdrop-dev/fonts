@@ -67,7 +67,7 @@ class Component implements Bootable {
 	 * @uses   wp_style_is()
 	 * @access public
 	 */
-	function is( $handle, $list = 'enqueued' ) {
+	public function is( $handle, $list = 'enqueued' ) {
 
 		return wp_style_is( "{$handle}-font", $list );
 	}
