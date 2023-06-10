@@ -34,8 +34,6 @@ function register( $handle, array $args = [] ) {
         'family'  => [],
         'display' => '',
         'subset'  => [],
-        'text'    => '',
-        'effect'  => [],
 
         // Arguments for `wp_register_style()`.
         'depends' => [],
@@ -184,8 +182,6 @@ function url( $handle, array $args = [] ) {
 
         $family  = apply_filters( "hybrid/font/{$handle}/family", $args['family'] );
         $subset  = apply_filters( "hybrid/font/{$handle}/subset", $args['subset'] );
-        $text    = apply_filters( "hybrid/font/{$handle}/text", $args['text'] );
-        $effect  = apply_filters( "hybrid/font/{$handle}/effect", $args['effect'] );
         $display = apply_filters( "hybrid/font/{$handle}/display", $args['display'] );
 
         if ( $family ) {
@@ -206,14 +202,6 @@ function url( $handle, array $args = [] ) {
 
             if ( $subset ) {
                 $query_args['subset'] = implode( ',', (array) $subset );
-            }
-
-            if ( $text ) {
-                $query_args['text'] = $text;
-            }
-
-            if ( $effect ) {
-                $query_args['effect'] = implode( '|', (array) $effect );
             }
 
             $font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
