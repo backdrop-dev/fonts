@@ -37,7 +37,7 @@ class Component implements Bootable {
 			'src' => get_parent_theme_file_path( "vendor/benlumia007/backdrop-fonts/fonts/{$handle}.css" )
 		] );
 
-		$url = url( $handle, $args );
+		$url = $this->url( $handle, $args );
 
 		return wp_register_style( "$handle", $url, $args['depends'], $args['version'], $args['media'] );
 	}
