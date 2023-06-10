@@ -28,6 +28,6 @@ class Provider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot() {
-		require_once 'bootstrap-app.php';
+		require_once 'functions-helpers.php';
 	}
 }
