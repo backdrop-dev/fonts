@@ -96,7 +96,7 @@ class Component implements Bootable {
 	 */
 	public function enqueue( $handle, array $args = [] ) {
 
-		if ( ! is_registered( $handle ) ) {
+		if ( ! $this->is_registered( $handle ) ) {
 			register( $handle, $args );
 		}
 
