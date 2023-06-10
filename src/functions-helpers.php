@@ -41,7 +41,7 @@ function register( $handle, array $args = [] ) {
         'depends' => [],
         'version' => null,
         'media'   => 'all',
-        'src'     => '', // Will overwrite Google Fonts arguments.
+        'src'     => [], // Will overwrite Google Fonts arguments.
     ] );
 
     $url = url( $handle, $args );
