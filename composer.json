@@ -17,10 +17,7 @@
     "autoload": {
         "psr-4": {
           "Backdrop\\Fonts\\": "src/"
-		},
-        "files": [
-            "src/functions-helpers.php"
-        ]
+		}
     },
     "require": {
         "php": ">=7.1"
