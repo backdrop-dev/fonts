@@ -42,6 +42,68 @@ class Component implements Bootable {
 		return wp_register_style( "$handle", $url, $args['depends'], $args['version'], $args['media'] );
 	}
 
+/**
+ * Helper function for creating the Google Fonts URL.  Note that `add_query_arg()`
+ * will call `urlencode_deep()`, so we're going to leaving the encoding to
+ * that function.
+ *
+ * @since  5.0.0
+ * @param  string $handle
+ * @param  array  $args
+ * @return void
+ *
+ * @access public
+ */
+function url( $handle, array $args = [] ) {
+
+    $font_url   = $args['src'] ?: '';
+    $query_args = [];
+
+    if ( ! $font_url ) {
+
+        $family  = apply_filters( "hybrid/font/{$handle}/family", $args['family'] );
+        $subset  = apply_filters( "hybrid/font/{$handle}/subset", $args['subset'] );
+        $text    = apply_filters( "hybrid/font/{$handle}/text", $args['text'] );
+        $effect  = apply_filters( "hybrid/font/{$handle}/effect", $args['effect'] );
+        $display = apply_filters( "hybrid/font/{$handle}/display", $args['display'] );
+
+        if ( $family ) {
+
+            $query_args['family'] = implode( '|', (array) $family );
+
+            $allowed_display = [
+                'auto',
+                'block',
+                'swap',
+                'fallback',
+                'optional',
+            ];
+
+            if ( $display && in_array( $display, $allowed_display ) ) {
+                $query_args['display'] = $display;
+            }
+
+            if ( $subset ) {
+                $query_args['subset'] = implode( ',', (array) $subset );
+            }
+
+            if ( $text ) {
+                $query_args['text'] = $text;
+            }
+
+            if ( $effect ) {
+                $query_args['effect'] = implode( '|', (array) $effect );
+            }
+
+            $font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+        }
+    }
+
+    return esc_url(
+        apply_filters( "hybrid/font/{$handle}/url", $font_url, $args, $query_args )
+    );
+}
+
 	/**
 	 * Checks if a font is registered.
 	 *
