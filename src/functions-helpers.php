@@ -37,7 +37,7 @@ function register( $handle, array $args = [] ) {
 	] );
 
 	if ( empty( $args['src'] ) ) {
-		$args['src'] = [ get_parent_theme_file_uri( "vendor/benlumia007/backdrop-fonts/fonts/$handle/$handle.css" ) ];
+		$args['src'] = [ get_parent_theme_file_uri( "vendor/backdrop-dev/fonts/assets/$handle/$handle.css" ) ];
 	}
 
 	$url = url( $handle, $args );
