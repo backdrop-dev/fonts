@@ -1,10 +1,8 @@
 {
-    "name": "benlumia007/backdrop-fonts",
-    "description": "A core that helps you build amazing themes",
-    "keywords": [
-        "wordpress"
-    ],
-    "homepage": "https://github.com/benlumia007/backdrop-googlefonts",
+    "name": "backdrop-dev/fonts",
+    "description": "Helper functions for loading Google Fonts locally.",
+    "keywords": [ "classicpress", "wordpress" ],
+    "homepage": "https://github.com/backdrop-dev/fonts",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
