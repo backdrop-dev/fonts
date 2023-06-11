@@ -30,8 +30,6 @@ function register( $handle, array $args = [] ) {
 
 	$args = wp_parse_args( $args, [
 		'family'  => [],
-		'display' => '',
-		'subset'  => [],
 		'depends' => '',
 		'src'     => [], // CSS file paths for local fonts.
 		'version' => null,
