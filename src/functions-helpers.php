@@ -5,20 +5,19 @@
  * Quick and easy-to-use functions for enqueueing font stylesheets, particularly
  * from local CSS files.
  *
- * @package   HybridFont
- * @link      https://github.com/themehybrid/hybrid-font
- *
- * @author    Theme Hybrid
- * @copyright Copyright (c) 2008 - 2023, Theme Hybrid
- * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * @package   Backdrop Fonts
+ * @author    Benjamin Lu <benlumia007@gmail.com>
+ * @copyright 2019-2023. Benjamin Lu
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html
+ * @link      https://github.com/backdrop-dev/fonts
  */
 
-namespace Hybrid\Font;
+namespace Backdrop\Font;
 
 /**
  * Registers a font.
  *
- * @since  5.0.0
+ * @since  1.0.0
  * @param  string $handle
  * @param  array  $args
  * @return bool
@@ -48,7 +47,7 @@ function register( $handle, array $args = [] ) {
 /**
  * Deregisters a registered font.
  *
- * @since  5.0.0
+ * @since  1.0.0
  * @param  string $handle
  * @return void
  *
@@ -64,7 +63,7 @@ function deregister( $handle ) {
  * Enqueues a registered font. If the font is not registered, pass the `$args` to
  * register it. See `register_font()`.
  *
- * @since  5.0.0
+ * @since  1.0.0
  * @param  string $handle
  * @param  array  $args
  * @return void
@@ -84,7 +83,7 @@ function enqueue( $handle, array $args = [] ) {
 /**
  * Dequeues a font.
  *
- * @since  5.0.0
+ * @since  1.0.0
  * @param  string $handle
  * @return void
  *
@@ -99,7 +98,7 @@ function dequeue( $handle ) {
 /**
  * Checks a font's status.
  *
- * @since  5.0.0
+ * @since  1.0.0
  * @param  string $handle
  * @param  string $list
  * @return bool
@@ -115,7 +114,7 @@ function is( $handle, $list = 'enqueued' ) {
 /**
  * Checks if a font is registered.
  *
- * @since  5.0.0
+ * @since  1.0.0
  * @param  string $handle
  * @return bool
  *
@@ -129,7 +128,7 @@ function is_registered( $handle ) {
 /**
  * Checks if a font is enqueued.
  *
- * @since  5.0.0
+ * @since  1.0.0
  * @param  string $handle
  * @return bool
  *
@@ -143,7 +142,7 @@ function is_enqueued( $handle ) {
 /**
  * Helper function for creating the font URL.
  *
- * @since  5.0.0
+ * @since  1.0.0
  * @param  string $handle
  * @param  array  $args
  * @return void
