@@ -12,7 +12,7 @@
  * @link      https://github.com/backdrop-dev/fonts
  */
 
-namespace Backdrop\Font;
+namespace Backdrop\Fonts;
 
 /**
  * Registers a font.
