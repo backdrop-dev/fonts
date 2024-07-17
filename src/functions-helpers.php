@@ -7,7 +7,7 @@
  *
  * @package   Backdrop Fonts
  * @author    Benjamin Lu <benlumia007@gmail.com>
- * @copyright 2019-2023. Benjamin Lu
+ * @copyright 2019 Benjamin Lu
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  * @link      https://github.com/backdrop-dev/fonts
  */
@@ -25,7 +25,7 @@ namespace Backdrop\Fonts;
  * @uses   wp_register_style()
  * @access public
  */
-function register( $handle, array $args = [] ) {
+function register( $handle, array $args = [] ): bool {
 
 	$args = wp_parse_args( $args, [
 		'family'  => [],
@@ -54,7 +54,7 @@ function register( $handle, array $args = [] ) {
  * @uses   wp_deregister_style()
  * @access public
  */
-function deregister( $handle ) {
+function deregister( $handle ): void {
 
 	wp_deregister_style( "{$handle}-font" );
 }
@@ -71,7 +71,7 @@ function deregister( $handle ) {
  * @uses   wp_enqueue_style()
  * @access public
  */
-function enqueue( $handle, array $args = [] ) {
+function enqueue( $handle, array $args = [] ): void {
 
 	if ( ! is_registered( $handle ) ) {
 		register( $handle, $args );
@@ -90,7 +90,7 @@ function enqueue( $handle, array $args = [] ) {
  * @uses   wp_dequeue_style()
  * @access public
  */
-function dequeue( $handle ) {
+function dequeue( $handle ): void {
 
 	wp_dequeue_style( "{$handle}-font" );
 }
@@ -106,7 +106,7 @@ function dequeue( $handle ) {
  * @uses   wp_style_is()
  * @access public
  */
-function is( $handle, $list = 'enqueued' ) {
+function is( $handle, $list = 'enqueued' ): bool {
 
 	return wp_style_is( "{$handle}-font", $list );
 }
@@ -120,7 +120,7 @@ function is( $handle, $list = 'enqueued' ) {
  *
  * @access public
  */
-function is_registered( $handle ) {
+function is_registered( $handle ): bool {
 
 	return is( $handle, 'registered' );
 }
@@ -134,7 +134,7 @@ function is_registered( $handle ) {
  *
  * @access public
  */
-function is_enqueued( $handle ) {
+function is_enqueued( $handle ): bool {
 
 	return is( $handle, 'enqueued' );
 }
@@ -145,11 +145,11 @@ function is_enqueued( $handle ) {
  * @since  1.0.0
  * @param  string $handle
  * @param  array  $args
- * @return void
+ * @return string
  *
  * @access public
  */
-function url( $handle, array $args = [] ) {
+function url( $handle, array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'src' => [],
