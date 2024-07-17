@@ -27,7 +27,7 @@ class Provider extends ServiceProvider {
 	 * @access protected
 	 * @return void
 	 */
-	public function boot() {
+	public function boot(): void {
 		require_once 'functions-helpers.php';
 	}
 }
