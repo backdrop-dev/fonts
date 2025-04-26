@@ -36,15 +36,11 @@ function register( string $handle, array $args = [] ): bool {
 
 	// Set default src if none provided.
 	if ( empty( $args['src'] ) ) {
-		if ( 'all' === $handle ) {
-			$args['src'] = [
-				get_parent_theme_file_uri( 'vendor/backdrop-dev/fonts/assets/all.css' ),
-			];
-		} else {
-			$args['src'] = [
-				get_parent_theme_file_uri( "vendor/backdrop-dev/fonts/assets/{$handle}/{$handle}.css" ),
-			];
-		}
+		$folder = ( 'all' === $handle ) ? 'all' : $handle;
+
+		$args['src'] = [
+			get_parent_theme_file_uri( "vendor/backdrop-dev/fonts/assets/{$folder}/{$handle}.css" ),
+		];
 	}
 
 	$url = url( $handle, $args );
