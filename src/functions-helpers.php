@@ -12,31 +12,39 @@
  * @link      https://github.com/backdrop-dev/fonts
  */
 
+declare(strict_types=1);
+
 namespace Backdrop\Fonts;
 
 /**
  * Registers a font.
  *
- * @since  1.0.0
- * @param  string $handle
- * @param  array  $args
- * @return bool
+ * @since 1.0.0
  *
- * @uses   wp_register_style()
- * @access public
+ * @param string $handle
+ * @param array  $args
+ * @return bool
  */
-function register( $handle, array $args = [] ): bool {
+function register( string $handle, array $args = [] ): bool {
 
 	$args = wp_parse_args( $args, [
-		'family'  => [],
-		'depends' => '',
-		'src'     => [], // CSS file paths for local fonts.
+		'depends' => [],
+		'src'     => [],
 		'version' => null,
 		'media'   => 'all',
 	] );
 
+	// Set default src if none provided.
 	if ( empty( $args['src'] ) ) {
-		$args['src'] = [ get_parent_theme_file_uri( "vendor/backdrop-dev/fonts/assets/$handle/$handle.css" ) ];
+		if ( 'all' === $handle ) {
+			$args['src'] = [
+				get_parent_theme_file_uri( 'vendor/backdrop-dev/fonts/assets/all.css' ),
+			];
+		} else {
+			$args['src'] = [
+				get_parent_theme_file_uri( "vendor/backdrop-dev/fonts/assets/{$handle}/{$handle}.css" ),
+			];
+		}
 	}
 
 	$url = url( $handle, $args );
@@ -47,31 +55,26 @@ function register( $handle, array $args = [] ): bool {
 /**
  * Deregisters a registered font.
  *
- * @since  1.0.0
- * @param  string $handle
- * @return void
+ * @since 1.0.0
  *
- * @uses   wp_deregister_style()
- * @access public
+ * @param string $handle
+ * @return void
  */
-function deregister( $handle ): void {
+function deregister( string $handle ): void {
 
 	wp_deregister_style( "{$handle}-font" );
 }
 
 /**
- * Enqueues a registered font. If the font is not registered, pass the `$args` to
- * register it. See `register_font()`.
+ * Enqueues a registered font.
  *
- * @since  1.0.0
- * @param  string $handle
- * @param  array  $args
+ * @since 1.0.0
+ *
+ * @param string $handle
+ * @param array  $args
  * @return void
- *
- * @uses   wp_enqueue_style()
- * @access public
  */
-function enqueue( $handle, array $args = [] ): void {
+function enqueue( string $handle, array $args = [] ): void {
 
 	if ( ! is_registered( $handle ) ) {
 		register( $handle, $args );
@@ -83,14 +86,12 @@ function enqueue( $handle, array $args = [] ): void {
 /**
  * Dequeues a font.
  *
- * @since  1.0.0
- * @param  string $handle
- * @return void
+ * @since 1.0.0
  *
- * @uses   wp_dequeue_style()
- * @access public
+ * @param string $handle
+ * @return void
  */
-function dequeue( $handle ): void {
+function dequeue( string $handle ): void {
 
 	wp_dequeue_style( "{$handle}-font" );
 }
@@ -98,15 +99,13 @@ function dequeue( $handle ): void {
 /**
  * Checks a font's status.
  *
- * @since  1.0.0
- * @param  string $handle
- * @param  string $list
- * @return bool
+ * @since 1.0.0
  *
- * @uses   wp_style_is()
- * @access public
+ * @param string $handle
+ * @param string $list
+ * @return bool
  */
-function is( $handle, $list = 'enqueued' ): bool {
+function is( string $handle, string $list = 'enqueued' ): bool {
 
 	return wp_style_is( "{$handle}-font", $list );
 }
@@ -114,13 +113,12 @@ function is( $handle, $list = 'enqueued' ): bool {
 /**
  * Checks if a font is registered.
  *
- * @since  1.0.0
- * @param  string $handle
- * @return bool
+ * @since 1.0.0
  *
- * @access public
+ * @param string $handle
+ * @return bool
  */
-function is_registered( $handle ): bool {
+function is_registered( string $handle ): bool {
 
 	return is( $handle, 'registered' );
 }
@@ -128,34 +126,31 @@ function is_registered( $handle ): bool {
 /**
  * Checks if a font is enqueued.
  *
- * @since  1.0.0
- * @param  string $handle
- * @return bool
+ * @since 1.0.0
  *
- * @access public
+ * @param string $handle
+ * @return bool
  */
-function is_enqueued( $handle ): bool {
+function is_enqueued( string $handle ): bool {
 
 	return is( $handle, 'enqueued' );
 }
 
 /**
  * Helper function for creating the font URL.
+ * If multiple srcs are given, returns the first one.
  *
- * @since  1.0.0
- * @param  string $handle
- * @param  array  $args
+ * @since 1.0.0
+ *
+ * @param string $handle
+ * @param array  $args
  * @return string
- *
- * @access public
  */
-function url( $handle, array $args = [] ): string {
+function url( string $handle, array $args = [] ): string {
 
 	$args = wp_parse_args( $args, [
 		'src' => [],
 	] );
 
-	$font_url = implode( ',', $args['src'] );
-
-	return esc_url( $font_url );
+	return is_array( $args['src'] ) ? reset( $args['src'] ) : (string) $args['src'];
 }
