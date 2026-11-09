@@ -19,6 +19,9 @@ namespace Backdrop\Fonts;
 /**
  * Registers a font.
  *
+ * With no `src`, registers the bundled font named `$handle` (see `assets/`), or
+ * returns false if there's no such font. With a `src`, registers that stylesheet.
+ *
  * @since 1.0.0
  *
  * @param string $handle
@@ -34,16 +37,29 @@ function register( string $handle, array $args = [] ): bool {
 		'media'   => 'all',
 	] );
 
-	// Set default src if none provided.
+	// A bundled font: its stylesheet in this package's `assets/{handle}/` folder,
+	// wherever the package is installed (a theme, a child theme or a plugin).
 	if ( empty( $args['src'] ) ) {
-		$folder = ( 'all' === $handle ) ? 'all' : $handle;
+		$file = asset_path( "{$handle}/{$handle}.css" );
 
-		$args['src'] = [
-			get_parent_theme_file_uri( "vendor/backdrop-dev/fonts/assets/{$folder}/{$handle}.css" ),
-		];
+		// Not a bundled font, and no `src` given: nothing to load.
+		if ( ! is_file( $file ) ) {
+			return false;
+		}
+
+		$args['src'] = [ asset_url( "{$handle}/{$handle}.css" ) ];
+
+		// Version the URL by the file, so browsers fetch it again after an update.
+		if ( null === $args['version'] ) {
+			$args['version'] = (string) filemtime( $file );
+		}
 	}
 
 	$url = url( $handle, $args );
+
+	if ( '' === $url ) {
+		return false;
+	}
 
 	return wp_register_style( "{$handle}-font", $url, $args['depends'], $args['version'], $args['media'] );
 }
@@ -133,8 +149,8 @@ function is_enqueued( string $handle ): bool {
 }
 
 /**
- * Helper function for creating the font URL.
- * If multiple srcs are given, returns the first one.
+ * Returns a font's stylesheet URL from its `src` argument: a string, or an
+ * array whose first URL is used. Returns an empty string when there's none.
  *
  * @since 1.0.0
  *
@@ -144,9 +160,75 @@ function is_enqueued( string $handle ): bool {
  */
 function url( string $handle, array $args = [] ): string {
 
-	$args = wp_parse_args( $args, [
-		'src' => [],
-	] );
+	$src = $args['src'] ?? [];
 
-	return is_array( $args['src'] ) ? reset( $args['src'] ) : (string) $args['src'];
+	if ( is_array( $src ) ) {
+		$src = reset( $src );
+	}
+
+	return is_string( $src ) ? $src : '';
+}
+
+/**
+ * Returns the path to a file in this package's `assets` folder.
+ *
+ * @since 1.0.2
+ *
+ * @param string $file Path inside `assets`, e.g. `lato/lato.css`.
+ * @return string
+ */
+function asset_path( string $file = '' ): string {
+
+	return dirname( __DIR__ ) . '/assets/' . ltrim( $file, '/' );
+}
+
+/**
+ * Returns the URL of a file in this package's `assets` folder, wherever the
+ * package is installed: the active theme, its parent, a plugin, a must-use
+ * plugin or elsewhere in `wp-content`. Filter it with
+ * `backdrop/fonts/asset/url` for an unusual setup.
+ *
+ * @since 1.0.2
+ *
+ * @param string $file Path inside `assets`, e.g. `lato/lato.css`.
+ * @return string
+ */
+function asset_url( string $file = '' ): string {
+
+	// Compare real, normalized paths, so symlinked themes and Windows paths match.
+	$normalize = static function ( string $path ): string {
+		$real = realpath( $path );
+
+		return untrailingslashit( wp_normalize_path( false !== $real ? $real : $path ) );
+	};
+
+	$path = $normalize( asset_path( $file ) );
+	$url  = '';
+
+	// The theme, then its parent.
+	$roots = [
+		[ get_stylesheet_directory(), get_stylesheet_directory_uri() ],
+		[ get_template_directory(), get_template_directory_uri() ],
+	];
+
+	// Plugins and must-use plugins.
+	foreach ( [ 'WP_PLUGIN_DIR' => 'WP_PLUGIN_URL', 'WPMU_PLUGIN_DIR' => 'WPMU_PLUGIN_URL' ] as $dir => $uri ) {
+		if ( defined( $dir ) && defined( $uri ) ) {
+			$roots[] = [ constant( $dir ), constant( $uri ) ];
+		}
+	}
+
+	// Anywhere else in `wp-content`.
+	$roots[] = [ WP_CONTENT_DIR, content_url() ];
+
+	foreach ( $roots as [ $root, $root_url ] ) {
+		$root = $normalize( $root );
+
+		if ( 0 === strpos( $path, $root . '/' ) ) {
+			$url = untrailingslashit( set_url_scheme( $root_url ) ) . substr( $path, strlen( $root ) );
+			break;
+		}
+	}
+
+	return (string) apply_filters( 'backdrop/fonts/asset/url', $url, $file, $path );
 }
