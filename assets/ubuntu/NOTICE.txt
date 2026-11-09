@@ -1,0 +1,5 @@
+Ubuntu
+Copyright 2011 Canonical Ltd.
+
+Licensed under the Ubuntu Font Licence, Version 1.0; see UFL.txt.
+Source: https://github.com/google/fonts/tree/main/ufl/ubuntu

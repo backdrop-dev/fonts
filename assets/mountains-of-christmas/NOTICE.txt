@@ -1,0 +1,5 @@
+Mountains of Christmas
+Copyright (c) 2010 2011, Font Diner, Inc DBA Tart Workshop (diner@fontdiner.com) with Reserved Font Name "Mountains of Christmas".
+
+Licensed under the Apache License, Version 2.0; see LICENSE.txt.
+Source: https://github.com/google/fonts/tree/main/apache/mountainsofchristmas
