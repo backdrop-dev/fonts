@@ -9,6 +9,9 @@ Changed
 * The helper functions have type declarations (`register( string $handle, array $args = [] ): bool` and so on). Code that passes a string handle and an array of arguments, as documented, is unaffected.
 * A font's `depends` argument defaults to an empty array instead of an empty string, which is what `wp_register_style()` expects.
 
+Fixed
+* `.gitattributes` marks fonts and images as binary. `* text eol=lf` treated them as text, so staging a changed `.woff2` file stripped bytes from it and broke the font.
+
 ## 1.0.1 - June 19, 2023
 Fixed
 * Wrong Namespace

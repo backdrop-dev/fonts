@@ -12,3 +12,16 @@
 # See https://help.github.com/articles/dealing-with-line-endings/
 
 * text eol=lf
+
+# Fonts and images are binary: never change their line endings. Without this,
+# `* text` above lets Git strip bytes from .woff2 files when they're staged.
+*.woff2 binary
+*.woff  binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
