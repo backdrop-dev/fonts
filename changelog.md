@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 - November 8, 2026
+## 1.0.2 - November 8, 2026
 Added
 * Eleven fonts: Abhaya Libre, Adamina, Alegreya, Allura, Archivo, Archivo Black, Cal Sans, Mountains of Christmas, Open Sans, Sanchez and Ubuntu. With Fira Sans, Lato, Merriweather and Tangerine, that's fifteen.
 * An `all` handle that loads every font at once: `enqueue( 'all' )`.
