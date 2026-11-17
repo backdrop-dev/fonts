@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 - November 17, 2026
+## 1.0.3 - November 17, 2026
 Added
 * Merriweather Sans (`merriweather-sans`), a latin subset of Google Fonts' variable font for weights 300 to 800, regular and italic, with its OFL license. With the other fifteen, that's sixteen fonts, and `enqueue( 'all' )` includes it.
 
