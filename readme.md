@@ -19,7 +19,7 @@ The package works out its own URL, so it works wherever Composer installs it: a 
 `register()` and `enqueue()` also take your own stylesheet: `enqueue( 'my-font', [ 'src' => 'https://…/my-font.css', 'version' => '1.0' ] )`. An unknown handle with no `src` isn't registered.
 
 # Fonts
-Abhaya Libre (`abhaya-libre`), Adamina (`adamina`), Alegreya (`alegreya`), Allura (`allura`), Archivo (`archivo`), Archivo Black (`archivo-black`), Cal Sans (`cal-sans`), Fira Sans (`fira-sans`), Lato (`lato`), Merriweather (`merriweather`), Mountains of Christmas (`mountains-of-christmas`), Open Sans (`open-sans`), Sanchez (`sanchez`), Tangerine (`tangerine`) and Ubuntu (`ubuntu`).
+Abhaya Libre (`abhaya-libre`), Adamina (`adamina`), Alegreya (`alegreya`), Allura (`allura`), Archivo (`archivo`), Archivo Black (`archivo-black`), Cal Sans (`cal-sans`), Fira Sans (`fira-sans`), Lato (`lato`), Merriweather (`merriweather`), Merriweather Sans (`merriweather-sans`), Mountains of Christmas (`mountains-of-christmas`), Open Sans (`open-sans`), Sanchez (`sanchez`), Tangerine (`tangerine`) and Ubuntu (`ubuntu`).
 
 They're under the SIL Open Font License 1.1, except Mountains of Christmas (Apache License 2.0) and Ubuntu (Ubuntu Font Licence 1.0). Each font's folder has its license (`OFL.txt`, `LICENSE.txt` or `UFL.txt`), and those two also have a `NOTICE.txt` with the copyright. The licenses come from [Google Fonts](https://github.com/google/fonts). Keep them with the fonts, and credit each font a theme loads, for example in its `readme.txt`.
 
@@ -30,7 +30,10 @@ Add `assets/{handle}/` with the font files, a `{handle}.css` whose URLs are `../
 php bin/build-all.php
 ```
 
+Merriweather Sans is a variable font (weights 300 to 800), so one file covers every weight; ask for any weight in your CSS.
+
 # Requirements
+* [Backdrop framework](https://github.com/backdrop-dev/framework) ^2.0
 * [ClassicPress](https://www.classicpress.net)
 * [WordPress](https://wordpress.org)
 * [PHP 7.4](https://www.php.net/releases/7_4_0.php)

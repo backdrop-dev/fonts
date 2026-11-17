@@ -240,6 +240,25 @@
 	src: url('../merriweather/merriweather-v30-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
 
+/* merriweather-sans */
+/* merriweather-sans - latin (variable, weights 300 to 800) */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Merriweather Sans';
+	font-style: normal;
+	font-weight: 300 800;
+	src: url('../merriweather-sans/merriweather-sans-latin-variable.woff') format('woff');
+}
+
+/* merriweather-sans-italic - latin (variable, weights 300 to 800) */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Merriweather Sans';
+	font-style: italic;
+	font-weight: 300 800;
+	src: url('../merriweather-sans/merriweather-sans-latin-variable-italic.woff') format('woff');
+}
+
 /* mountains-of-christmas */
 /* mountains-of-christmas-regular - latin */
 @font-face {
