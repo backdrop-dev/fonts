@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.3 - November 17, 2026
+Added
+* Merriweather Sans (`merriweather-sans`), a latin subset of Google Fonts' variable font for weights 300 to 800, regular and italic, with its OFL license. With the other fifteen, that's sixteen fonts, and `enqueue( 'all' )` includes it.
+
+Changed
+* Requires `backdrop-dev/framework` ^2.0 in `composer.json`; the provider extends `Backdrop\Core\ServiceProvider`, which was not declared.
+* The provider loads `functions-helpers.php` with `__DIR__`, instead of a relative path that depends on PHP's include path.
+
 ## 1.0.2 - November 8, 2026
 Added
 * Eleven fonts: Abhaya Libre, Adamina, Alegreya, Allura, Archivo, Archivo Black, Cal Sans, Mountains of Christmas, Open Sans, Sanchez and Ubuntu. With Fira Sans, Lato, Merriweather and Tangerine, that's fifteen.

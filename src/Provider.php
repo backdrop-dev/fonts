@@ -4,7 +4,7 @@
  *
  * @package   Backdrop Fonts
  * @author    Benjamin Lu <benlumia007@gmail.com>
- * @copyright 2019. Benjamin Lu
+ * @copyright 2019-2026 Benjamin Lu
  * @license   https://www.gnu.org/licenses/gpl-2.0.html
  * @link      https://github.com/backdrop-dev/fonts
  */
@@ -28,6 +28,6 @@ class Provider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot(): void {
-		require_once 'functions-helpers.php';
+		require_once __DIR__ . '/functions-helpers.php';
 	}
 }
